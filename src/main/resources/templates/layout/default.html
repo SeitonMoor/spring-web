@@ -7,13 +7,13 @@
     <body>
         <ul class="nav nav-pills justify-content-center">
             <li class="nav-item">
-                <a class="nav-link active" href="/news">News</a>
+                <a class="nav-link" href="/news" th:classappend="${#request.servletPath == '/news' ? 'active' : ''}">News</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contacts">Contacts</a>
+                <a class="nav-link" href="/contacts" th:classappend="${#request.servletPath == '/contacts' ? 'active' : ''}">Contacts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/greeting">Start</a>
+                <a class="nav-link" href="/greeting" th:classappend="${#request.servletPath == '/greeting' ? 'active' : ''}">Start</a>
             </li>
         </ul>
         <div class="container">

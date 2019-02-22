@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +18,7 @@ public class GreetingController {
 
     @PostConstruct
     public void init() {
-        repository = new FileNewsRepository(
-                ClassLoader.getSystemResourceAsStream("news.txt"));
+        repository = new FileNewsRepository("news.txt");
     }
 
     @GetMapping("/greeting")
@@ -28,7 +28,7 @@ public class GreetingController {
     }
 
     @GetMapping("/news")
-    public String news(Model model) throws IOException {
+    public String news(Model model, HttpServletRequest request) throws IOException {
         List<News> news = repository.readNews();
 
         model.addAttribute("news", news);
